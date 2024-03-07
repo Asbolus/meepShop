@@ -62,4 +62,12 @@ export class AccountController {
         res.status(500).json({ message: 'An error occurred' });
     }
 }
+  public getTransactionLogs(req: Request, res: Response): void {
+    try {
+      const logs = this.bankingService.getTransactionLogs();
+      res.status(200).json(logs);
+    } catch (error) {
+      res.status(500).json({ message: 'An error occurred while fetching transaction logs.' });
+    }
+  }
 }

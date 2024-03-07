@@ -35,7 +35,7 @@ export class BankingService {
     if (typeof amount !== 'number' || isNaN(amount)) {
         throw new Error('Invalid amount.');
     }
-    
+
     const account = this.findAccountById(accountId);
     if (!account) {
       throw new Error('Account not found.');
@@ -76,5 +76,9 @@ export class BankingService {
 
   public findAccountById(accountId: number): Account | undefined {
     return this.accounts.find(account => account.id === accountId);
+  }
+  
+  public getTransactionLogs(): any[] {
+    return this.transactionLog;
   }
 }
